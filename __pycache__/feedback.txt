@@ -1,0 +1,16 @@
+﻿    • Ligne 28: ajouter un commentaire du genre “the order in the tree matters since the first piece found is selected, therefore pieces that go along the border are placed first in the tree”?
+    • ligne 96: plus clean de passer piece_id dans la fonction au lieu de current (du coup ligne 129 devient fit_tetris(child.data))
+    • lignes 105 et 137: les commentaires me paraissent pas très justes, faudrait mettre du genre: “iterate over the entire matrix twice; the first time with a target score of 0, placing the tetrominos only if they fit perfectly, the second time with a target score of -1, to fill all 3 squares-holes”
+    • ligne 112: “to exit the recursive tree rapidly after a piece is found”?
+    • ligne 123: remplacer score==-2 par score<target_score, comme ça dans le cas ou on cherche un target score de 0, ça va quit le path dès qu’on est à -1 (ça fait encore un bon gain de vitesse!)
+    • ligne 127: occurs*
+    • ligne 141: “modify the given matrix directly to avoid an initialization and save memory”?
+    • lignes 153 et 161: ça serait plus clean de bouger la ligne n+=1 à la fin de la fonction fit_tetris
+
+    • pour les fonctions en python en general on met des docstring (check sur internet), par exemple pour fit_tetris ça pourrait être au minimum:
+       """Places the tetris piece with given id at position (x,y) in the solution matrix
+          """
+      Pour la fonction Tetris il y en avait un donné de base
+
+    • pour les variables globales je viens de vérifier, il y a pas besoin de les déclarer au début de la fonction si tu les modifies pas, pour dfs il te faut seulement “global found” et pour fit_tetris “global n” (si tu as changé pour ligne 153/161)
+
